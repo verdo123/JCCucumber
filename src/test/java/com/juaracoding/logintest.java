@@ -78,3 +78,25 @@ public class logintest {
     }
 
 }
+
+
+@AfterStep
+    public void getResultStatus(Scenario scenario){
+        if(scenario.isFailed()){
+            String screenshotPath = Utils.getScreenshot(driver, scenario.getName())
+                    .replace(" ","_");
+            extentTest.log(LogStatus.FAIL, scenario.getName()+"\n"
+                +extentTest.addScreenCapture(screenshotPath));
+        }
+    }
+
+@AfterStep
+    public void getResultStatus(Scenario scenario) throws IOException {
+        if(scenario.isFailed()){
+            String screenshotPath = Utils.getScreenshot(driver, scenario.getName()
+                    .replace(" ","_"));
+            extentTest.log(LogStatus.FAIL, scenario.getName()+"\n"
+                +extentTest.addScreenCapture(screenshotPath));
+        }
+    }
+
