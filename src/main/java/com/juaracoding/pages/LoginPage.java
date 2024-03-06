@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.awt.*;
-
 public class LoginPage {
 
     private WebDriver driver;
@@ -25,19 +23,19 @@ public class LoginPage {
     @FindBy(xpath = "//input[@placeholder='Password']")
     private WebElement password;
 
-    @FindBy(xpath = "//button[@type='submit']")
+    @FindBy(xpath = "//input[@id='login-button']")
     private WebElement btnLogin;
 
-    @FindBy(xpath = "//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']")
+    @FindBy(xpath = "//span[@class='title']")
     private WebElement TxtDashboard;
 
-    @FindBy(xpath = "//p[@class='oxd-text oxd-text--p oxd-alert-content-text']")
+    @FindBy(xpath = "//h3[@data-test='error']")
     private WebElement TxtInvalid;
 
-    @FindBy(xpath = "//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']")
-    private WebElement dropDwonIcon;
+    @FindBy(xpath = "//button[@id='react-burger-menu-btn']")
+    private WebElement sideBar;
 
-    @FindBy(xpath = "//a[normalize-space()='Logout']")
+    @FindBy(xpath = "//a[@id='logout_sidebar_link']")
     private WebElement btnLogout;
 
     public void formLogin(){
@@ -62,11 +60,9 @@ public class LoginPage {
         return TxtDashboard.getText();
     }
 
-    public void clickDropDownIcon(){
-        dropDwonIcon.click();
-    }
 
-    public void clickBtnLogout(){
+    public void formBtnLogout(){
+        sideBar.click();
         btnLogout.click();
     }
 
